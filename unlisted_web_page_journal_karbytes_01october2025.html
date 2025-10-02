@@ -1,0 +1,91 @@
+<hr>
+<p><strong>journal_karbytes_01october2025</strong></p>
+<hr>
+<p><span style="background: #ffff00">The text in the web page section below was copied from the plain-text file named <a style="background: #000000;color: #ff9000" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_49/main/journal_karbytes_01october2025_p0.txt" target="_blank" rel="noopener noreferrer">journal_karbytes_01october2025_p0.txt</a> in the “micro directory” website section named <a style="background: #000000;color: #00ff00" href="https://karbytesforlifeblog.wordpress.com/raw_github_files_directory_karlina_object_extension_pack_49/" target="_blank" rel="noopener noreferrer">raw_github_files_directory_KARLINA_OBJECT_extension_pack_49</a> in the “macro directory” website section (named <a style="background: #000000;color: #00ff00" href="https://karbytesforlifeblog.wordpress.com/raw_github_files_macro_directory/" target="_blank" rel="noopener noreferrer">RAW_GITHUB_FILES_MACRO_DIRECTORY</a>) of the website named <a style="background: #000000;color: #ff9000" href="https://karbytesforlifeblog.wordpress.com/" target="_blank" rel="noopener noreferrer">Karbytes For Life Blog dot WordPress dot Com</a>. Some of the aforementioned copied <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/Plain_text" target="_blank" rel="noopener noreferrer">plain-text</a> was then replaced with relevant <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/Hypertext" target="_blank" rel="noopener noreferrer">hypertext</a> on this web page.</span></p>
+<p><em>To view hidden text inside of the preformatted text boxes below, scroll horizontally.</em></p>
+<hr>
+<div style="font-family: monospace">
+<p>/**<br />&nbsp;* file: <a style="background: #000000;color: #ff9000" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_49/main/journal_karbytes_01october2025_p0.txt" target="_blank" rel="noopener noreferrer">journal_karbytes_01october2025_p0.txt</a><br />&nbsp;* type: plain-text<br />&nbsp;* date: 01_OCTOBER_2025<br />&nbsp;* author: <a style="background: #000000;color: #ff9000" href="https://karbytesforlifeblog.wordpress.com/about_karbytes/" target="_blank" rel="noopener noreferrer">karbytes</a><br />&nbsp;* license: <a style="background: #000000;color: #ff9000" href="https://karlinaobject.wordpress.com/public_domain/" target="_blank" rel="noopener noreferrer">PUBLIC_DOMAIN</a><br />&nbsp;*/</p>
+<p>Today I used the following <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/Unix" target="_blank" rel="noopener noreferrer">Unix</a> command to download an entire 983.7 megabyte compressed <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/FASTA_format" target="_blank" rel="noopener noreferrer">FASTA</a> file of a <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/Reference_genome" target="_blank" rel="noopener noreferrer">reference</a> human genome (so that I can practice archiving <a style="background: #000000;color: #ff9000" href="https://karbytesforlifeblog.wordpress.com/karbytes_unique_identity/" target="_blank" rel="noopener noreferrer">my own genome</a> FASTA when it becomes tentatively available within the next six months):</p>
+<p>[bash]</p>
+<pre>
+# UCSC Genome Browser (hg38 reference)
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+</pre>
+<p>[end bash]</p>
+<p>Unforunately, the unzipped version of that file was too large to fit on my Desktop and caused my computer to freeze midway through expanding the zip file.</p>
+<p>I inquired <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/GPT-5" target="_blank" rel="noopener noreferrer">ChatGPT-5</a> about the difference between the <a style="background: #ff9000;color: #000000" href="https://genome.ucsc.edu/" target="_blank" rel="noopener noreferrer">HG38</a> Reference Genome FASTA file and the FASTA file I expect to be getting via <a style="background: #ff9000;color: #000000" href="https://sequencing.com/" target="_blank" rel="noopener noreferrer">Sequencing dot Com</a>. Here is what ChatGPT-5 said:</p>
+<p>[excerpt]</p>
+<pre>
+📊 Two very different “FASTA” situations
+1. Reference genome FASTA (like UCSC hg38)
+- Contains every chromosome, contig, alternate locus in plain text.
+- That’s what you downloaded: hg38.fa.gz (~3 GB compressed, ~90–100 GB uncompressed).
+- This is the “master” reference and it’s huge.
+- Way too big to fit on a single 25 GB M-DISC unless you keep it compressed.
+2. Personal genome FASTA (from sequencing companies)
+- After sequencing, many providers will give you a consensus FASTA of just your diploid genome sequence.
+- That’s ~3.2 billion bases (one byte per base) → about 3–6 GB uncompressed.
+- Compressed, often ~1 GB.
+- This easily fits on an M-DISC alongside your other data.
+</pre>
+<p>[end excerpt]</p>
+<p><span style="background:#00ffff">I thought it would be a good idea to archive the hg38.fa.gz compresssed FASTA file given that it can be used to &#8220;complete&#8221; my personal FASTA file.</span></p>
+<p>I used the following Unix command to split the hg38.fa.gz file into chunks no larger than 20 megabytes each labeled with a unique integer starting with zero.</p>
+<p>[bash]</p>
+<pre>
+split -b 20M -d --suffix-length=4 hg38.fa.gz hg38_chunk_
+</pre>
+<p>[end bash]</p>
+<p>I uploaded one of those chunk files to a public <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/GitHub" target="_blank" rel="noopener noreferrer">GitHub</a> repository I owned and tried saving its raw GitHub file <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/URL" target="_blank" rel="noopener noreferrer">URL</a> to the <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/Wayback_Machine" target="_blank" rel="noopener noreferrer">WayBack Machine</a>:</p>
+<p>[test_url]</p>
+<pre>
+# Note that the uncensored version of this Uniform Resource Locator (URL) refers to one of my anonymous GitHub user accounts.
+h&#8203;ttps://raw.githubusercontent.com/[github_username]/[public_repository_name]/main/hg38_chunk_0000
+</pre>
+<p>[end test_url]</p>
+<p>Apparently the 20mb file is too large to properly show up in the WayBack Machine. The saved web page ended up being a &#8220;404 page not found&#8221; result. The same error page result occurred when I tried saving MP4 videos to the WayBack Machine which contained too many non-identical frames.</p>
+<p>I inquired ChatGPT-5 about it and ChatGPT-5 confirmed that &#8220;high entropy&#8221; files tend to not be saved to the WayBack Machine. I asked ChatGPT-5 if I should try chunking the FASTA into smaller sizes and it suggested 5 megabytes. Hence, I used the following Unix command to re-create the FASTA chunk files.</p>
+<p>[bash]</p>
+<pre>
+split -b 5M -d --suffix-length=4 hg38.fa.gz hg38_chunk_
+</pre>
+<p>[end bash]</p>
+<p>I uploaded one of those chunk files to a public GitHub repository I owned and tried saving its raw GitHub file URL to the WayBack Machine:</p>
+<p>[test_url]</p>
+<p># Note that the uncensored version of this Uniform Resource Locator (URL) refers to one of my anonymous GitHub user accounts.</p>
+<pre>
+h&#8203;ttps://raw.githubusercontent.com/[github_username]/[public_repository_name]/main/hg38_chunk_0001
+</pre>
+<p>[end test_url]</p>
+<p>It worked! I was able to save one of the ~5mb chunk files to the WayBack Machine such that the file can be downloaded from the WayBack Machine.</p>
+<p>Next, I used the following command to combine all the chunked files into a copy of the original hg38.fa.gz file. The original was placed in a different file directory than the chunks to avoid that original file being overwritten.</p>
+<p>[bash]</p>
+<pre>
+cat hg38_chunk_* &gt; hg38.fa.gz
+</pre>
+<p>[end bash]</p>
+<p>The result of running that command was getting a 983.7 megabyte file named hg38.fa.gz.</p>
+<p>I generated a <a style="background: #ff9000;color: #000000" href="https://en.wikipedia.org/wiki/Checksum" target="_blank" rel="noopener noreferrer">checksum</a> of each FASTA file to ensure that both files are identical using the following command on each file.</p>
+<p>[bash]</p>
+<pre>
+sha256sum hg38.fa.gz
+</pre>
+<p>[end bash]</p>
+<p>The result I got for each file was as follows:</p>
+<p>[checksum_result]</p>
+<pre>
+c1dd87068c254eb53d944f71e51d1311964fce8de24d6fc0effc9c61c01527d4  hg38.fa.gz
+</pre>
+<p>[end checksum_result]</p>
+<p>Hence, <span style="background:#00ffff">I now have the means to back up the entire (compressed) human genome such that all of its data can be saved to the WayBack Machine in ~5 megabyte increments</span>.</p>
+<p>This journal entry file and each of the 5.2 megabyte chunk files which comprise the original hg38.fa.gz file are available in the following karbytes <a style="background: #000000;color: #00ff00" href="https://karbytesforlifeblog.wordpress.com/micro_directory_definition/" target="_blank" rel="noopener noreferrer">&#8220;micro directory&#8221;</a>:</p>
+<p>[micro_directory_url]</p>
+<pre>
+<a style="background: #000000;color: #00ff00" href="https://karbytesforlifeblog.wordpress.com/raw_github_files_directory_reference_human_genome_fasta_hg38/" target="_blank" rel="noopener noreferrer">https://karbytesforlifeblog.wordpress.com/raw_github_files_directory_reference_human_genome_fasta_hg38/</a>
+</pre>
+<p>[end micro_directory_url]</p>
+</div>
+<hr>
+<p>This web page was last updated on 01_OCTOBER_2025. The content displayed on this web page is licensed as <a style="background: #000000;color: #ff9000" href="https://karlinaobject.wordpress.com/public_domain/" target="_blank" rel="noopener noreferrer">PUBLIC_DOMAIN</a> intellectual property.</p>
+<hr>

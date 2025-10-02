@@ -1,0 +1,124 @@
+/** 
+ * file: journal_karbytes_01october2025_p0.txt
+ * type: plain-text 
+ * date: 01_OCTOBER_2025
+ * author: karbytes 
+ * license: PUBLIC_DOMAIN 
+ */
+
+Today I used the following Unix command to download an entire 983.7 megabyte compressed FASTA file of a reference human genome (so that I can practice archiving my own genome FASTA when it becomes tentatively available within the next six months):
+
+[bash]
+
+# UCSC Genome Browser (hg38 reference)
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+
+[end bash]
+
+Unforunately, the unzipped version of that file was too large to fit on my Desktop and caused my computer to freeze midway through expanding the zip file. 
+
+I inquired ChatGPT-5 about the difference between the HG38 Reference Genome FASTA file and the FASTA file I expect to be getting via Sequencing dot Com. Here is what ChatGPT-5 said:
+
+[excerpt]
+
+📊 Two very different “FASTA” situations
+
+1. Reference genome FASTA (like UCSC hg38)
+
+- Contains every chromosome, contig, alternate locus in plain text.
+
+- That’s what you downloaded: hg38.fa.gz (~3 GB compressed, ~90–100 GB uncompressed).
+
+- This is the “master” reference and it’s huge.
+
+- Way too big to fit on a single 25 GB M-DISC unless you keep it compressed.
+
+2. Personal genome FASTA (from sequencing companies)
+
+- After sequencing, many providers will give you a consensus FASTA of just your diploid genome sequence.
+
+- That’s ~3.2 billion bases (one byte per base) → about 3–6 GB uncompressed.
+
+- Compressed, often ~1 GB.
+
+- This easily fits on an M-DISC alongside your other data.
+
+[end excerpt]
+
+I thought it would be a good idea to archive the hg38.fa.gz compresssed FASTA file given that it can be used to "complete" my personal FASTA file.
+
+I used the following Unix command to split the hg38.fa.gz file into chunks no larger than 20 megabytes each labeled with a unique integer starting with zero. 
+
+[bash]
+
+split -b 20M -d --suffix-length=4 hg38.fa.gz hg38_chunk_
+
+[end bash]
+
+I uploaded one of those chunk files to a public GitHub repository I owned and tried saving its raw GitHub file URL to the WayBack Machine:
+
+[test_url]
+
+# Note that the uncensored version of this Uniform Resource Locator (URL) refers to one of my anonymous GitHub user accounts.
+
+https://raw.githubusercontent.com/[github_username]/[public_repository_name]/main/hg38_chunk_0000
+
+[end test_url]
+
+Apparently the 20mb file is too large to properly show up in the WayBack Machine. The saved web page ended up being a "404 page not found" result. The same error page result occurred when I tried saving MP4 videos to the WayBack Machine which contained too many non-identical frames.
+
+I inquired ChatGPT-5 about it and ChatGPT-5 confirmed that "high entropy" files tend to not be saved to the WayBack Machine. I asked ChatGPT-5 if I should try chunking the FASTA into smaller sizes and it suggested 5 megabytes. Hence, I used the following Unix command to re-create the FASTA chunk files.
+
+[bash]
+
+split -b 5M -d --suffix-length=4 hg38.fa.gz hg38_chunk_
+
+[end bash]
+
+I uploaded one of those chunk files to a public GitHub repository I owned and tried saving its raw GitHub file URL to the WayBack Machine:
+
+[test_url]
+
+# Note that the uncensored version of this Uniform Resource Locator (URL) refers to one of my anonymous GitHub user accounts.
+
+https://raw.githubusercontent.com/[github_username]/[public_repository_name]/main/hg38_chunk_0001
+
+[end test_url]
+
+It worked! I was able to save one of the ~5mb chunk files to the WayBack Machine such that the file can be downloaded from the WayBack Machine.
+
+Next, I used the following command to combine all the chunked files into a copy of the original hg38.fa.gz file. The original was placed in a different file directory than the chunks to avoid that original file being overwritten.
+
+[bash]
+
+cat hg38_chunk_* > hg38.fa.gz
+
+[end bash]
+
+The result of running that command was getting a 983.7 megabyte file named hg38.fa.gz.
+
+I generated a checksum of each FASTA file to ensure that both files are identical using the following command on each file.
+
+[bash]
+
+sha256sum hg38.fa.gz
+
+[end bash]
+
+The result I got for each file was as follows:
+
+[checksum_result]
+
+c1dd87068c254eb53d944f71e51d1311964fce8de24d6fc0effc9c61c01527d4  hg38.fa.gz
+
+[end checksum_result]
+
+Hence, I now have the means to back up the entire (compressed) human genome such that all of its data can be saved to the WayBack Machine in ~5 megabyte increments.
+
+This journal entry file and each of the 5.2 megabyte chunk files which comprise the original hg38.fa.gz file are available in the following karbytes "micro directory":
+
+[micro_directory_url]
+
+https://karbytesforlifeblog.wordpress.com/raw_github_files_directory_reference_human_genome_fasta_hg38/
+
+[end micro_directory_url]
